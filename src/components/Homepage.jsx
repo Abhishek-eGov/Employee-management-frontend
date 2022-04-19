@@ -21,26 +21,7 @@ return(
     <>
     <Header/>
 
-    <button
-        className="bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded m-1"
-        onClick={() => handleClick("en")}
-      >
-        English
-      </button>
-      <button
-        className=" bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded m-1"
-        onClick={() => handleClick("hi")}
-      >
-        Hindi
-      </button>
-
-      <button
-        className=" bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded m-1"
-        onClick={() => handleClick("ma")}
-      >
-       Marathi
-      </button>
- 
+  
     <div className="flex items-center mt-24 mb-10">
           <div className="flex-grow text-left px-4 py-2 m-2">
             <h5 className="text-gray-900 font-bold text-xl">Employee Listing</h5>
