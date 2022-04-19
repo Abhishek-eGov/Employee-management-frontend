@@ -1,0 +1,25 @@
+import axios from "axios";
+
+const URL = "http://localhost:8080/employee";
+
+
+const CREATE_EMPLOYEE = (employee) => axios.post(URL, employee);
+
+const EMPLOYEES = () => axios.get(URL);
+
+const EMPLOYEE = (id) => axios.get(`${URL}/${id}`);
+
+const UPDATE_EMPLOYEE = (employee) =>
+  axios.put(`${URL}/${employee.id}`, employee);
+
+const DELETE_EMPLOYEE = (id) => axios.delete(`${URL}/${id}`);
+
+const EMPLOYEE_SERVICE = {
+  EMPLOYEE,
+  EMPLOYEES,
+  CREATE_EMPLOYEE,
+  UPDATE_EMPLOYEE,
+  DELETE_EMPLOYEE,
+};
+
+export default EMPLOYEE_SERVICE;
