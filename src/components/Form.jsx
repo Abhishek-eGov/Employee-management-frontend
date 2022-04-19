@@ -2,10 +2,25 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate} from "react-router-dom";
-
 import Header from "./Header/header";
 import Input from "./Input";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
+const schema = yup
+  .object({
+    name: yup
+      .string()
+      .matches(/^[A-Za-z ]*$/, "Please enter valid name")
+      .max(40)
+      .required(),
+    email: yup.string().email().required(),
+    mobile: yup
+      .string()
+      .matches(new RegExp("[0-9]{10}"), "Please enter valid Mobile Nmber"),
+    location: yup.string().required(),
+  })
+  .required();
 
 function Form({ onSubmit, data }) {
 	
@@ -16,6 +31,7 @@ function Form({ onSubmit, data }) {
 		setValue,
 		formState: { errors },
 	} = useForm({
+		resolver: yupResolver(schema),
 		
 	});
 	useEffect(() => {
@@ -47,7 +63,7 @@ function Form({ onSubmit, data }) {
 
         <Input label="Location" register={register} />
         <p className="text-red-500 text-sm italic">
-          {errors.location?.message && "Should be Number"}
+          {errors.location?.message && "Enter location"}
         </p>
 		<div className="mt-5 flex justify-center ">
 						<button
