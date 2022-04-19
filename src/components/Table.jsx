@@ -2,9 +2,7 @@ import React from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
-import EMPLOYEE_SERVICE from '../service/index'
-
-
+import EMPLOYEE_SERVICE from "../components/service"
 
 function Table(){
   const client = useQueryClient();
@@ -15,6 +13,8 @@ function Table(){
       client.invalidateQueries("employees");
     },
   });
+
+  
     return(
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg" >
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

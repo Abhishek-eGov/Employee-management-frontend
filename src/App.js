@@ -1,10 +1,10 @@
 
 import './App.css';
-import Header from './components/Header/header';
+
 import Home from './components/Homepage';
 import { Routes, Route } from "react-router-dom"
-import AddEmp from './components/AddEmployee';
-import EditEmp from './components/EditEmployee';
+import Create from "./components/Create";
+import Update from "./components/Update";
 
 function App() {
   return (
@@ -12,8 +12,9 @@ function App() {
 
 <Routes>
         <Route path="/" element={ <Home/> } />
-        <Route path="add" element={ <AddEmp/> } />
-        <Route path="edit" element={ <EditEmp/> } />
+        <Route path="/create" element={<Create />} />
+				<Route path="/update/:id" element={<Update />} />
+        
       </Routes>
 
    
