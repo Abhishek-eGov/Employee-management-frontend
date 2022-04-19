@@ -6,6 +6,7 @@ import Header from "./Header/header";
 import Input from "./Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useTranslation } from "react-i18next";
 
 const schema = yup
   .object({
@@ -23,6 +24,8 @@ const schema = yup
   .required();
 
 function Form({ onSubmit, data }) {
+
+	const { t } = useTranslation();
 	
 	const nav = useNavigate();
 	const {
@@ -50,8 +53,6 @@ function Form({ onSubmit, data }) {
 				<form
 					className="w-full max-w-sm container mt-2 mx-auto" onSubmit={handleSubmit(onSubmit)} 
 				>
-
-
 		<Input type="text" label="Name" register={register} required />
         <p className="text-red-500 text-sm italic">{errors.name?.message}</p>
 
@@ -77,7 +78,7 @@ function Form({ onSubmit, data }) {
 							className="mt-5 bg-red-400 w-full hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 							onClick={() => nav("/")}
 						>
-							Cancel
+							Cancle
 						</button>
 					</div>
 				</form>

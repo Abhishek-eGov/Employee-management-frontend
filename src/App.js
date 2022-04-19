@@ -6,6 +6,8 @@ import { Routes, Route } from "react-router-dom"
 import Create from "./components/Create";
 import Update from "./components/Update";
 
+import './i18next'
+
 function App() {
   return (
     <>

@@ -3,8 +3,11 @@ import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import EMPLOYEE_SERVICE from "../components/service"
+import { useTranslation } from "react-i18next";
 
 function Table(){
+
+  const { t } = useTranslation();
   const client = useQueryClient();
   const nav = useNavigate();
   const { data} = useQuery("employees", EMPLOYEE_SERVICE.EMPLOYEES);
@@ -30,31 +33,31 @@ function Table(){
                         scope="col"
                         className="px-6 py-3"
                       >
-                        {("NAME")}
+                        {t("NAME")}
                       </th>
                       <th
                         scope="col"
                         className="px-6 py-3"
                       >
-                        {("EMAIL")}
+                        {t("EMAIL")}
                       </th>
                       <th
                         scope="col"
                         className="px-6 py-3"
                       >
-                        {("MOBILE")}
+                        {t("MOBILE")}
                       </th>
                       <th
                         scope="col"
                         className="px-6 py-3"
                       >
-                        {("LOCATION")}
+                        {t("LOCATION")}
                       </th>
                       <th
                         scope="col"
                         className="px-6 py-3"
                       >
-                        {("ACTION")}
+                        {t("ACTION")}
                       </th>
                     </tr>
                   </thead>
