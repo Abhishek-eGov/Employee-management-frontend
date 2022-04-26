@@ -2,7 +2,6 @@
 import { Link } from "react-router-dom";
 import Header from "./Header/header";
 
-import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import Loading from "./Loading";
 import React, { lazy, Suspense } from "react";
@@ -11,9 +10,6 @@ const Table = lazy(() => import("./Table"));
 
 function  Home (){
   const { t } = useTranslation();
-  function handleClick(lang) {
-    i18next.changeLanguage(lang);
-  }
 
 
 return(
@@ -24,7 +20,7 @@ return(
   
     <div className="flex items-center mt-24 mb-10">
           <div className="flex-grow text-left px-4 py-2 m-2">
-            <h5 className="text-gray-900 font-bold text-xl">Employee Listing</h5>
+            <h3 className="text-gray-900 font-bold text-xl">Employee Listing</h3>
           </div>
           
           <div className="flex-grow text-right px-4 py-2 m-2">
