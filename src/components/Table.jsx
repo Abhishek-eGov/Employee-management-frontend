@@ -1,4 +1,4 @@
-import React from "react";
+import React, {  useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ function Table(){
   const { t } = useTranslation();
   const client = useQueryClient();
   const nav = useNavigate();
+
   const { data} = useQuery("employees", EMPLOYEE_SERVICE.EMPLOYEES);
   const DELETE = useMutation(EMPLOYEE_SERVICE.DELETE_EMPLOYEE, {
     onSuccess: () => {
@@ -17,8 +18,10 @@ function Table(){
     },
   });
 
+ 
   
     return(
+      <> 
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg" >
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead className="ext-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -54,11 +57,18 @@ function Table(){
                         {t("LOCATION")}
                       </th>
                       <th
+                      scope="col"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    >
+                      {t("Department")}
+                    </th>
+                      <th
                         scope="col"
                         className="px-6 py-3"
                       >
                         {t("ACTION")}
                       </th>
+                     
                     </tr>
                   </thead>
                   <tbody>
@@ -66,8 +76,10 @@ function Table(){
                       ?.map((val, index) => ({
                         ...val,
                         tableId: index + 1,
+                        
                       }))
                       .map((val, index) => (
+                        console.log("GETTINGGG", val.department.title),
                         <tr className="border-b" key={index}>
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                             {val.tableId}
@@ -84,6 +96,11 @@ function Table(){
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             {val.location}
                           </td>
+                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {val.department.title}
+                            
+                          </td>
+                          
   
                           <td className="text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <div className="flex">
@@ -102,7 +119,7 @@ function Table(){
                   </tbody>
                 </table>
               </div>
-      
+              </>
     )
 
 }
