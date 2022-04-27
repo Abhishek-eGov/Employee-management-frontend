@@ -4,19 +4,29 @@ import Header from "./Header/header";
 
 import { useTranslation } from "react-i18next";
 import Loading from "./Loading";
-import React, { lazy, Suspense } from "react";
+import React, {  useState , useTransition ,lazy, Suspense } from "react";
 
 const Table = lazy(() => import("./Table"));
 
 function  Home (){
+  const [input, setInput] = useState("");
+  const [isPending, startTransition] = useTransition();
   const { t } = useTranslation();
 
+  const searchHandler = (e) => {
+		startTransition(() => {
+			setInput(e.target.value);
+    
+		});
+		setInput(e.target.value);
+    
+	};
 
 return(
     
     <>
     <Header/>
-
+  
   
     <div className="flex items-center mt-24 mb-10">
           <div className="flex-grow text-left px-4 py-2 m-2">
@@ -39,7 +49,7 @@ return(
         <Table />
       </Suspense>
         
-       
+		
     </>
 
 )

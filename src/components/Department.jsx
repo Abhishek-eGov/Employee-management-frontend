@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
 
 import EMPLOYEE_SERVICE from "./service";
-export default function Select({ label, control, required, type }) {
+export default function Department({ label, control, required, type }) {
   const { t } = useTranslation();
   const { data, status, isLoading, error } = useQuery(
     "departments",
@@ -52,7 +52,6 @@ export default function Select({ label, control, required, type }) {
         </select>
       )}
     />
-  
   </div>
   );
 }

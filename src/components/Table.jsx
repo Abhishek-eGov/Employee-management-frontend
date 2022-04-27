@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React ,{useState}from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +6,7 @@ import EMPLOYEE_SERVICE from "../components/service"
 import { useTranslation } from "react-i18next";
 
 function Table(){
-
+  const [search, setSearch] = useState("");
   const { t } = useTranslation();
   const client = useQueryClient();
   const nav = useNavigate();
@@ -22,7 +22,30 @@ function Table(){
   
     return(
       <> 
+       <input
+          className="form-control
+        block
+        w-min
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        ml-3
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder={t("Search") + "......."}
+        />
+      
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg" >
+          
+        
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead className="ext-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -72,12 +95,31 @@ function Table(){
                     </tr>
                   </thead>
                   <tbody>
-                    {data?.data
-                      ?.map((val, index) => ({
+                  {data?.data &&
+                    data?.data
+                      .filter((val) => {
+                        if (val == "") {
+                          return val;
+                        } else if (
+                          val.name
+                            .toLowerCase()
+                            .includes(search.toLowerCase()) ||
+                          val.email
+                            .toLowerCase()
+                            .includes(search.toLowerCase()) ||
+                          val.location
+                            .toLowerCase()
+                            .includes(search.toLowerCase())
+                        ) {
+                          return val;
+                        }
+                      })
+
+                      .map((val, index) => ({
                         ...val,
                         tableId: index + 1,
-                        
                       }))
+                      
                       .map((val, index) => (
                         console.log("GETTINGGG", val.department.title),
                         <tr className="border-b" key={index}>
@@ -119,6 +161,8 @@ function Table(){
                   </tbody>
                 </table>
               </div>
+
+			
               </>
     )
 
