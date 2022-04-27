@@ -7,6 +7,7 @@ import Input from "./Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
+import Select from "./Select";
 
 const schema = yup
   .object({
@@ -32,6 +33,7 @@ function Form({ onSubmit, data }) {
 		register,
 		handleSubmit,
 		setValue,
+		control,
 		formState: { errors },
 	} = useForm({
 		resolver: yupResolver(schema),
@@ -43,6 +45,8 @@ function Form({ onSubmit, data }) {
 			setValue("email", data?.email);
 			setValue("mobile", data?.mobile);
 			setValue("location", data?.location);
+			setValue("location", data?.title);
+		
 		}// eslint-disable-next-line
 	}, [data]);
 
@@ -66,6 +70,17 @@ function Form({ onSubmit, data }) {
         <p className="text-red-500 text-sm italic">
           {errors.location?.message && "Enter location"}
         </p>
+
+
+
+
+		<Select label="department_id" register={register} control={control} />
+
+
+
+
+
+
 		<div className="mt-5 flex justify-center ">
 						<button
 							type="submit"
