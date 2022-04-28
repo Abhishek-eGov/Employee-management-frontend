@@ -7,7 +7,6 @@ function Header(){
   function handleClick(lang) {
     i18next.changeLanguage(lang);
   }
-
     return(
         <Popover className="relative bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -41,8 +40,6 @@ function Header(){
       >
        Marathi
       </button>
- 
-          
             <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
              
               <a

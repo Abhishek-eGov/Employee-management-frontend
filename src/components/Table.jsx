@@ -26,9 +26,8 @@ function Table(){
        <h1 className="antialiased text-2xl	mx-8 mt-8 ">{t("Employees.1")}</h1> ​
      <div className="flex mt-5 ml-60 ">
 
-     <input
-          className="form-control
-           shadow rounded border-0 p-3
+     <input className="form-control
+        shadow rounded border-0 p-3
         block
         w-min
         px-3

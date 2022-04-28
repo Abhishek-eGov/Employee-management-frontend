@@ -26,8 +26,6 @@ const schema = yup
 
 function Form({ onSubmit, data }) {
 
-	
-	
 	const nav = useNavigate();
 	const {
 		register,
@@ -53,10 +51,8 @@ function Form({ onSubmit, data }) {
 		<>
 		<Header/>
 		
-			<div className="w-full max-w-6xl flex justify-center items-center ">
-				<form
-					className="w-full max-w-sm container mt-2 mx-auto" onSubmit={handleSubmit(onSubmit)} 
-				>
+		<div className="w-full max-w-6xl flex justify-center items-center ">
+		<form className="w-full max-w-sm container mt-2 mx-auto" onSubmit={handleSubmit(onSubmit)} >
 		<Input type="text" label="Name" register={register} required />
         <p className="text-red-500 text-sm italic">{errors.name?.message}</p>
 
@@ -74,15 +70,13 @@ function Form({ onSubmit, data }) {
 		<div className="mt-5 flex justify-center ">
 						<button
 							type="submit"
-							className="mt-5 bg-green-400 w-full hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-						>
+							className="mt-5 bg-green-400 w-full hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
 							SUBMIT
 						</button></div>
 						<div className="mt-5 flex justify-center ">
 						<button
 							className="mt-5 bg-red-400 w-full hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-							onClick={() => nav("/")}
-						>
+							onClick={() => nav("/")}>
 							Cancle
 						</button>
 					</div>
