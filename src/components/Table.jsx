@@ -4,6 +4,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import EMPLOYEE_SERVICE from "../components/service"
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 function Table(){
   const [search, setSearch] = useState("");
@@ -22,8 +23,12 @@ function Table(){
   
     return(
       <> 
-       <input
+       <h1 className="antialiased text-2xl	mx-8 mt-8 ">{t("Employees.1")}</h1> ​
+     <div className="flex mt-5 ml-60 ">
+
+     <input
           className="form-control
+           shadow rounded border-0 p-3
         block
         w-min
         px-3
@@ -40,12 +45,18 @@ function Table(){
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder={t("Search") + "......."}
+          placeholder={t("Search") + ".."}
         />
-      
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg" >
-          
-        
+<div className="ml-80">
+<Link to="create">
+              <button  className="bg-green-400 hover:bg-green-500 text-white font-semibold py-2 px-4 rounded inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                <span className="pl-2">Add Employee</span>
+              </button>
+              </Link>
+     </div>
+     </div>
+        <div className="flex flex-col shadow-xl shadow-xl mt-5 ml-10 mr-10" >
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead className="ext-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -53,7 +64,7 @@ function Table(){
                         scope="col"
                         className="px-6 py-3"
                       >
-                        ID
+                         {t("ID")}
                       </th>
                       <th
                         scope="col"
@@ -95,10 +106,11 @@ function Table(){
                     </tr>
                   </thead>
                   <tbody>
+
                   {data?.data &&
                     data?.data
                       .filter((val) => {
-                        if (val == "") {
+                        if (val === "") {
                           return val;
                         } else if (
                           val.name
@@ -121,7 +133,7 @@ function Table(){
                       }))
                       
                       .map((val, index) => (
-                        console.log("GETTINGGG", val.department.title),
+                      
                         <tr className="border-b" key={index}>
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                             {val.tableId}
@@ -142,7 +154,7 @@ function Table(){
                             {val.department.title}
                             
                           </td>
-                          
+        
   
                           <td className="text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <div className="flex">
@@ -161,8 +173,6 @@ function Table(){
                   </tbody>
                 </table>
               </div>
-
-			
               </>
     )
 
